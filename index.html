@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarô Digital - Escolha sua Intenção</title>
+    <!-- Link para FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Link para o CSS atualizado -->
+    <link rel="stylesheet" href="{{ url_for("static", filename="style.css") }}">
+</head>
+<body data-trilha-pref="{{ preferencias.get("trilha", "silencio") }}" data-vibracao-pref="{{ "true" if preferencias.get("vibracao", true) else "false" }}">
+    <div class="container container-inicio" style="opacity: 0; transform: scale(0.95);">
+        <header>
+            <h1>Tarô Digital</h1>
+            <p class="subtitle">Desvende os mistérios do seu caminho.</p>
+        </header>
+        <main>
+            <!-- Placeholder para Oráculo Digital com Avatar Personalizado -->
+            <div class="oraculo-placeholder" title="Seu Guia Espiritual">
+                {% set avatar = preferencias.get("avatar", "mistica") %}
+                {% if avatar == "cigana" %}
+                    <i class="fa-solid fa-hat-cowboy-side"></i> <!-- Ícone placeholder para Cigana -->
+                {% elif avatar == "lunar" %}
+                    <i class="fa-solid fa-moon"></i> <!-- Ícone placeholder para Avatar Lunar -->
+                {% elif avatar == "solar" %}
+                    <i class="fa-solid fa-sun"></i> <!-- Ícone placeholder para Xamã Solar -->
+                {% else %} {# Padrão: mistica #}
+                    <i class="fa-solid fa-wand-sparkles"></i> <!-- Ícone placeholder para Mulher Mística -->
+                {% endif %}
+            </div>
+            <p class="intro-text">Qual portal você deseja abrir hoje? Escolha sua intenção:</p>
+            <div class="botoes-intencao">
+                <a href="{{ url_for("iniciar_jornada", intencao="relacionamento") }}" class="btn-intencao">
+                    <i class="fa-solid fa-heart"></i>
+                    <span>Relacionamento</span>
+                </a>
+                <a href="{{ url_for("iniciar_jornada", intencao="espiritualidade") }}" class="btn-intencao">
+                    <i class="fa-solid fa-star"></i>
+                    <span>Espiritualidade</span>
+                </a>
+                <a href="{{ url_for("iniciar_jornada", intencao="dinheiro") }}" class="btn-intencao">
+                    <i class="fa-solid fa-coins"></i>
+                    <span>Dinheiro</span>
+                </a>
+                {# <a href="{{ url_for("iniciar_pergunta_livre") }}" class="btn-intencao">
+                    <i class="fa-solid fa-question"></i>
+                    <span>Pergunta Livre</span>
+                </a> #}
+                {# <a href="{{ url_for("iniciar_modo_paz") }}" class="btn-intencao">
+                    <i class="fa-solid fa-dove"></i>
+                    <span>Momento de Paz</span>
+                </a> #}
+            </div>
+        </main>
+        <footer>
+            <p>&copy; 2025 Tarô Digital</p>
+            <!-- Link para Configurações -->
+            <a href="{{ url_for("configuracoes") }}" class="btn btn-secondary" style="margin-top: 15px; font-size: 0.9rem;"><i class="fa-solid fa-gear"></i> Configurações</a>
+        </footer>
+    </div>
+    <!-- Script principal -->
+    <script src="{{ url_for("static", filename="scripts.js") }}"></script>
+</body>
+</html>
+

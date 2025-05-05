@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarô Digital - Jornada: {{ intencao.capitalize() }} ({{ pergunta.id }}/{{ total_perguntas }})</title>
+    <!-- Link para FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Link para o CSS atualizado -->
+    <link rel="stylesheet" href="{{ url_for("static", filename="style.css") }}">
+</head>
+<body data-trilha-pref="{{ preferencias.get("trilha", "silencio") }}" data-vibracao-pref="{{ "true" if preferencias.get("vibracao", true) else "false" }}">
+    <div class="container container-pergunta" style="opacity: 0; transform: scale(0.95);">
+        <header>
+            <h1>Jornada: {{ intencao.capitalize() }}</h1>
+            <div class="progress-indicator">Pergunta {{ pergunta.id }} de {{ total_perguntas }}</div>
+        </header>
+        <main>
+            <form action="{{ url_for("responder_pergunta_jornada", intencao=intencao, pergunta_id=pergunta.id) }}" method="post">
+                <p class="question-text">{{ pergunta.texto }}</p>
+
+                <div class="form-group">
+                    {% if pergunta.tipo == "multipla_escolha" or pergunta.tipo == "escala" %}
+                        <div class="choice-group">
+                            {% for opcao in pergunta.opcoes %}
+                                <input type="radio" id="opcao{{ loop.index }}" name="resposta" value="{{ opcao }}" required>
+                                <label for="opcao{{ loop.index }}">{{ opcao }}</label>
+                            {% endfor %}
+                        </div>
+                    {% elif pergunta.tipo == "texto_curto" %}
+                        <input type="text" id="resposta" name="resposta" required placeholder="Sua resposta...">
+                    {% elif pergunta.tipo == "texto_longo" %}
+                        <textarea id="resposta" name="resposta" required placeholder="Descreva aqui..."></textarea>
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="btn btn-next">Próximo <i class="fa-solid fa-arrow-right"></i></button>
+            </form>
+        </main>
+        <footer>
+            <p>&copy; 2025 Tarô Digital</p>
+            <!-- Link para voltar ou cancelar? Adicionar se necessário -->
+        </footer>
+    </div>
+    <!-- Script principal -->
+    <script src="{{ url_for("static", filename="scripts.js") }}"></script>
+</body>
+</html>
+

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Afiliado - Tarô Digital</title>
+    <link rel="stylesheet" href="{{ url_for("static", filename="style.css") }}">
+    <style>
+        /* Estilos podem ser compartilhados com o admin ou específicos */
+        body {
+            background-color: #f8f7fa; /* Lilás muito claro */
+            color: #333;
+            font-family: sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(90, 62, 141, 0.1);
+        }
+        h1, h2 {
+            color: #5a3e8d; /* Roxo do tema original */
+            margin-bottom: 15px;
+        }
+        h1 { text-align: center; margin-bottom: 30px; }
+        .info-box {
+            background: #ede7f6; /* Lilás mais claro */
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #c8a2c8; /* Lilás */
+        }
+        .info-box h3 {
+            margin-top: 0;
+            color: #5a3e8d;
+        }
+        .info-box p {
+            margin-bottom: 5px;
+        }
+        .info-box strong {
+            color: #333;
+        }
+        .info-box input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            box-sizing: border-box;
+        }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-box {
+            background: #e8eaf6; /* Azul-lilás claro */
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 5px solid #9fa8da; /* Azul-lilás */
+        }
+        .stat-box h3 {
+            margin-top: 0;
+            font-size: 1em;
+            color: #3f51b5; /* Azul índigo */
+        }
+        .stat-box p {
+            font-size: 1.6em;
+            font-weight: bold;
+            margin: 10px 0 0 0;
+            color: #333;
+        }
+        .nav-links {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .nav-links a {
+            margin: 0 15px;
+            color: #5a3e8d;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Painel do Afiliado</h1>
+        <p>Bem-vindo(a), {{ current_user.username }}!</p>
+
+        <div class="info-box">
+            <h3>Seu Link de Afiliado</h3>
+            {% if current_user.affiliate_code %}
+                <p>Use este link para indicar novos usuários e registrar suas conversões:</p>
+                <input type="text" value="{{ url_for("register", ref=current_user.affiliate_code, _external=True) }}" readonly>
+                <p><small>Seu código de afiliado: <strong>{{ current_user.affiliate_code }}</strong></small></p>
+            {% else %}
+                <p>Seu código de afiliado ainda não foi gerado. Contate o administrador.</p>
+            {% endif %}
+        </div>
+
+        <h2>Suas Estatísticas</h2>
+        <div class="stat-grid">
+            <div class="stat-box">
+                <h3>Registros Indicados</h3>
+                <p>{{ stats.get("registros_indicados", 0) }}</p>
+            </div>
+            <div class="stat-box">
+                <h3>Compras Indicadas (R$19,90)</h3>
+                <p>{{ stats.get("compras_produto_1990", 0) }}</p>
+            </div>
+            <!-- Adicionar mais estatísticas conforme necessário -->
+        </div>
+
+        <!-- Seção futura: Detalhes de conversões, Materiais de divulgação, etc. -->
+
+        <div class="nav-links">
+            <a href="{{ url_for("index") }}">Voltar para o App</a>
+            <a href="{{ url_for("logout") }}">Sair (Logout)</a>
+        </div>
+    </div>
+</body>
+</html>
+
