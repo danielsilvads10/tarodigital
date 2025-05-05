@@ -1,0 +1,54 @@
+Perfeito. Aqui está o **prompt complementar**, direto e objetivo, focado **em ajustes de erros e tarefas técnicas específicas** para garantir o pleno funcionamento da aplicação:
+
+---
+
+### 🎯 Prompt Técnico – Correção e Ajustes na Aplicação Web
+
+**Objetivo:** Corrigir erros de funcionalidade e garantir que a aplicação funcione 100%, sem falhas de navegação, carregamento ou acesso.
+
+---
+
+### ✅ Tarefas a serem executadas:
+
+1. **Correção de Navegação e Funcionalidade:**
+
+   * Corrigir o erro em que o cliente clica em uma aba (como “Relacionamento”) e nada acontece.
+   * Garantir que ao selecionar qualquer das 4 áreas da vida (Amor, Carreira, Saúde, Espiritualidade), o sistema carregue corretamente as próximas etapas (perguntas, análise, tarô).
+   * Evitar que a página trave ou gere erros de JavaScript.
+
+2. **Validação do Fluxo de Perguntas:**
+
+   * Certificar-se de que as 7 perguntas personalizadas aparecem de forma sequencial e são obrigatórias para prosseguir.
+   * Garantir que as respostas sejam salvas corretamente no banco de dados.
+
+3. **Análise de Foto (Reconhecimento Facial):**
+
+   * Corrigir erros na etapa de upload ou leitura de imagem do usuário (caso travem ou não carreguem).
+   * Garantir que a análise do olhar funcione corretamente e esteja vinculada ao perfil do usuário.
+
+4. **Leitura de Tarô:**
+
+   * Corrigir falhas no sorteio ou exibição das cartas.
+   * Garantir que a leitura seja relevante com base nas respostas e área escolhida.
+
+5. **Integração Painel Admin ↔ Painel Cliente:**
+
+   * Corrigir links quebrados entre painel do administrador e convite para usuários.
+   * Garantir que o painel admin possa visualizar, editar ou excluir dados dos clientes.
+
+6. **Correções Técnicas Gerais:**
+
+   * Corrigir erros de atualização automática da página (evitar refresh desnecessário).
+   * Garantir responsividade mobile e desktop.
+   * Corrigir erros de acesso negado ou páginas em branco.
+   * Testar todos os fluxos e corrigir quaisquer bugs encontrados.
+
+7. **Teste Final e Deploy:**
+
+   * Realizar testes completos de ponta a ponta (usuário e admin).
+   * Hospedar em ambiente confiável e estável (ex: Vercel, Netlify, Render, etc.).
+   * Gerar link de acesso final e funcional.
+
+---
+
+Se quiser, posso gerar o código dessa aplicação ou te ajudar a montar esse projeto com ferramentas no-code/low-code também. Deseja que eu indique como construir ou corrigir essa aplicação?

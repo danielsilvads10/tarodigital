@@ -1,0 +1,64 @@
+WARNING: GEMINI_API_KEY environment variable not set. Using placeholder or potentially failing.
+Gemini API Key not found in environment variables.
+ * Serving Flask app 'src/main.py'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://169.254.0.21:5005
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [03/May/2025 22:47:19] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [03/May/2025 22:47:19] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [03/May/2025 22:48:33] "[32mPOST /login HTTP/1.1[0m" 302 -
+127.0.0.1 - - [03/May/2025 22:48:33] "GET /admin HTTP/1.1" 200 -
+127.0.0.1 - - [03/May/2025 22:48:33] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [03/May/2025 22:49:14] "[32mPOST /admin/set_affiliate/2 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [03/May/2025 22:49:14] "GET /admin HTTP/1.1" 200 -
+127.0.0.1 - - [03/May/2025 22:49:14] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [03/May/2025 22:49:40] "[32mGET /logout HTTP/1.1[0m" 302 -
+127.0.0.1 - - [03/May/2025 22:49:40] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [03/May/2025 22:49:40] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [03/May/2025 22:50:56] "[32mPOST /login HTTP/1.1[0m" 302 -
+[2025-05-03 22:50:56,733] ERROR in app: Exception on /affiliate/dashboard [GET]
+Traceback (most recent call last):
+  File "/home/ubuntu/tarot_venv/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/tarot_venv/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/tarot_venv/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/tarot_venv/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/tarot_digital_app/src/main.py", line 497, in decorated_function
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/tarot_digital_app/src/main.py", line 959, in affiliate_dashboard
+    return render_template('affiliate/dashboard.html',
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/tarot_venv/lib/python3.11/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/tarot_venv/lib/python3.11/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/tarot_venv/lib/python3.11/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/home/ubuntu/tarot_venv/lib/python3.11/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/ubuntu/tarot_digital_app/src/templates/affiliate/dashboard.html", line 98, in top-level template code
+    <p>Bem-vindo(a), {{ current_user.username }}!</p>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/tarot_venv/lib/python3.11/site-packages/jinja2/environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'current_user' is undefined
+127.0.0.1 - - [03/May/2025 22:50:56] "[35m[1mGET /affiliate/dashboard HTTP/1.1[0m" 500 -
+10.44.168.1 - - [03/May/2025 22:51:21] "[32mPOST /admin/set_affiliate/2 HTTP/1.1[0m" 302 -
+10.44.168.1 - - [03/May/2025 22:51:21] "GET /login?next=http://5005-iwwk70bxrufennhng624u-9b987ad8.manus.computer/admin/set_affiliate/2 HTTP/1.1" 200 -
+10.44.168.1 - - [03/May/2025 22:51:21] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.44.168.1 - - [03/May/2025 22:51:23] "GET /login?next=http://5005-iwwk70bxrufennhng624u-9b987ad8.manus.computer/admin/set_affiliate/2 HTTP/1.1" 200 -
+10.44.168.1 - - [03/May/2025 22:51:23] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
